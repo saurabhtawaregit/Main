@@ -12,5 +12,9 @@
         <members>*</members>
         <name>ApexPage</name>
     </types>
+    	<types>
+		<members>Account.Active__c</members>
+		<name>CustomField</name>
+	</types>
     <version>44.0</version>
 </Package>
