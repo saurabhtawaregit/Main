@@ -22,7 +22,7 @@
             <value>
                 <fullName>Again</fullName>
                 <default>false</default>
-                <label>Yes</label>
+                <label>Again</label>
             </value>
         </valueSetDefinition>
     </valueSet>
