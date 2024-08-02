@@ -44,7 +44,7 @@ jobs:
         displayName: Install sfdx-git-delta plugin
 
       - bash: |
-          sfdx sgd:source:delta --to HEAD --output . --ignore .gitignore
+          sfdx sgd:source:delta --from HEAD~1 --to HEAD --output . --ignore .gitignore
         displayName: Check for delta changes
 
       - bash: |
@@ -92,7 +92,7 @@ jobs:
         displayName: Install sfdx-git-delta plugin
 
       - bash: |
-          sfdx sgd:source:delta --to HEAD --output . --ignore .gitignore
+          sfdx sgd:source:delta --from HEAD~1 --to HEAD --output . --ignore .gitignore
         displayName: Check for delta changes
 
       - bash: |
