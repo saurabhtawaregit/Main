@@ -23,7 +23,7 @@ jobs:
 
       - task: UseNode@1
         inputs:
-          version: 16.x
+          version: 17.x
 
       - script: |
           npm install --global sfdx-cli
@@ -71,7 +71,7 @@ jobs:
 
       - task: UseNode@1
         inputs:
-          version: 16.x
+          version: 17.x
 
       - script: |
           npm install --global sfdx-cli
