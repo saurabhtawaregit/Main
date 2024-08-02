@@ -23,11 +23,11 @@ jobs:
 
       - task: UseNode@1
         inputs:
-          version: 17.x
+          version: 16.x
 
       - script: |
-          npm install --global @salesforce/cli
-        displayName: Install Salesforce CLI (new)
+          npm install --global sfdx-cli
+        displayName: Install Salesforce CLI
 
       - task: DownloadSecureFile@1
         name: opensslCertificate
@@ -36,29 +36,29 @@ jobs:
           secureFile: server.key
 
       - bash: |
-          sf org login jwt --username $(userName) --jwt-key-file $(opensslCertificate.secureFilePath) --client-id $(clientId) --instance-url $(instanceUrl)
+          sfdx force:auth:jwt:grant --clientid $(clientId) --jwtkeyfile $(opensslCertificate.secureFilePath) --username $(userName) --instanceurl $(instanceUrl) -a TargetOrg
         displayName: Authorize Salesforce Org
 
       - bash: |
-          echo y | sf plugins:install sfdx-git-delta
-        displayName: Installing sfdx-git-delta plugin
+          echo y | sfdx plugins:install sfdx-git-delta
+        displayName: Install sfdx-git-delta plugin
 
       - bash: |
-          sf sgd:source:delta -f HEAD^ --output . --ignore .gitignore
-        displayName: Checking for delta changes
+          sfdx sgd:source:delta --to HEAD --output . --ignore .gitignore
+        displayName: Check for delta changes
 
       - bash: |
           cat package/package.xml
-        displayName: Showing the generated delta of package.xml
+        displayName: Show generated delta of package.xml
 
       - bash: |
           cat destructiveChanges/destructiveChanges.xml
-        displayName: Showing the destructiveChanges.xml
+        displayName: Show destructiveChanges.xml
 
       - bash: |
           TEST_CLASSES=$(tr '\n' ' ' < test-classes.txt)
-          sf project deploy start --ignore-warnings --manifest package/package.xml --dry-run --test-level RunSpecifiedTests --tests $TEST_CLASSES --target-org $(userName) --post-destructive-changes destructiveChanges/destructiveChanges.xml --wait 40
-        displayName: Running validation on source code
+          sfdx force:source:deploy --ignorewarnings --manifest package/package.xml --checkonly --testlevel RunSpecifiedTests --runtests $TEST_CLASSES --targetusername TargetOrg --postdestructivechanges destructiveChanges/destructiveChanges.xml --wait 40
+        displayName: Run validation on source code
 
   - job: DeployOnMain
     displayName: Deploy changes on merge to main branch
@@ -71,11 +71,11 @@ jobs:
 
       - task: UseNode@1
         inputs:
-          version: 17.x
+          version: 16.x
 
       - script: |
-          npm install --global @salesforce/cli
-        displayName: Install Salesforce CLI (new)
+          npm install --global sfdx-cli
+        displayName: Install Salesforce CLI
 
       - task: DownloadSecureFile@1
         name: opensslCertificate
@@ -84,31 +84,31 @@ jobs:
           secureFile: server.key
 
       - bash: |
-          sf org login jwt --username $(userName) --jwt-key-file $(opensslCertificate.secureFilePath) --client-id $(clientId) --instance-url $(instanceUrl)
+          sfdx force:auth:jwt:grant --clientid $(clientId) --jwtkeyfile $(opensslCertificate.secureFilePath) --username $(userName) --instanceurl $(instanceUrl) -a TargetOrg
         displayName: Authorize Salesforce Org
 
       - bash: |
-          echo y | sf plugins:install sfdx-git-delta
-        displayName: Installing sfdx-git-delta plugin
+          echo y | sfdx plugins:install sfdx-git-delta
+        displayName: Install sfdx-git-delta plugin
 
       - bash: |
-          sf sgd:source:delta -f HEAD^ --output . --ignore .gitignore
-        displayName: Checking for delta changes
+          sfdx sgd:source:delta --to HEAD --output . --ignore .gitignore
+        displayName: Check for delta changes
 
       - bash: |
           cat package/package.xml
-        displayName: Showing the generated delta of package.xml
+        displayName: Show generated delta of package.xml
 
       - bash: |
           cat destructiveChanges/destructiveChanges.xml
-        displayName: Showing the destructiveChanges.xml
+        displayName: Show destructiveChanges.xml
 
       - bash: |
           TEST_CLASSES=$(tr '\n' ' ' < test-classes.txt)
-          sf project deploy start --ignore-warnings --manifest package/package.xml --dry-run --test-level RunSpecifiedTests --tests $TEST_CLASSES --target-org $(userName) --post-destructive-changes destructiveChanges/destructiveChanges.xml --wait 40
-        displayName: Running validation on source code
+          sfdx force:source:deploy --ignorewarnings --manifest package/package.xml --checkonly --testlevel RunSpecifiedTests --runtests $TEST_CLASSES --targetusername TargetOrg --postdestructivechanges destructiveChanges/destructiveChanges.xml --wait 40
+        displayName: Run validation on source code
 
       - bash: |
           TEST_CLASSES=$(tr '\n' ' ' < test-classes.txt)
-          sf project deploy start --ignore-warnings --manifest package/package.xml --test-level RunSpecifiedTests --tests $TEST_CLASSES --target-org $(userName) --post-destructive-changes destructiveChanges/destructiveChanges.xml --wait 40
-        displayName: Deploying source code to target org
+          sfdx force:source:deploy --ignorewarnings --manifest package/package.xml --testlevel RunSpecifiedTests --runtests $TEST_CLASSES --targetusername TargetOrg --postdestructivechanges destructiveChanges/destructiveChanges.xml --wait 40
+        displayName: Deploy source code to target org
