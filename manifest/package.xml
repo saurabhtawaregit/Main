@@ -15,6 +15,7 @@
     	<types>
 		<members>Account.Active__c</members>
         <members>Account.Status__c</members>
+		<members>Case.Jira_Link__c</members>
 		<name>CustomField</name>
 	</types>
     <version>44.0</version>
