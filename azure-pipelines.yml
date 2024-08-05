@@ -13,13 +13,20 @@ variables:
 
 jobs:
   - job: ValidateAndDeploy
-    displayName: Validate and Deploy changes
+    displayName: Validate, Scan, and Deploy changes
     condition: or(eq(variables['Build.Reason'], 'PullRequest'), and(succeeded(), eq(variables['Build.SourceBranchName'], 'main')))
     pool:
       vmImage: 'ubuntu-latest'
     steps:
       - checkout: self
         fetchDepth: 0
+
+      - name: Setup PMD
+        uses: legetz/setup-pmd@7.1.0
+
+      - name: APEX full scan
+        run: pmd check --dir ./force-app/main/default/classes --rulesets ./pmd-rules.xml -f text
+        displayName: Running Apex PMD Code Scan
 
       - task: UseNode@1
         inputs:
