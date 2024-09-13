@@ -30,10 +30,10 @@ export default class KnowledgeArticleDetail extends NavigationMixin(LightningEle
         return false;*/
 
         this[NavigationMixin.Navigate]({
-            type: 'standard__webPage',
+            type: 'standard__namedPage',
             attributes: {
-                url: 'https://ssst-e-dev-ed.develop.my.site.com/sfdcx/s/'
-            }
+                pageName: 'home'
+            },
         });
         
     }
