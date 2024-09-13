@@ -1,0 +1,66 @@
+/* Main container styling */
+.knowledge-article-container {
+    padding: 20px;
+    background-color: #f4f6f9; /* Light grey background for the container */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Header styling */
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #d9dde3; /* Separator line */
+}
+
+/* Back icon styling */
+.back-icon {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Title styling */
+.article-title {
+    font-weight: bold;
+    font-size: 1.5rem; /* Larger font for the title */
+    color: #2a2a2a; /* Darker color for better readability */
+}
+
+/* Publish date styling */
+.publish-date {
+    margin: 10px 0;
+    font-size: 0.875rem; /* Smaller font for secondary information */
+    color: #7e8185; /* Light grey text */
+}
+
+/* Article section styling */
+.article-section {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #ffffff; /* White background for content sections */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Light shadow for depth */
+}
+
+/* Article content styling */
+.article-content {
+    font-size: 1rem; /* Standard font size */
+    color: #4a4a4a; /* Slightly darker text for better contrast */
+    line-height: 1.6; /* Improved line height for readability */
+}
+
+/* Responsive styling for smaller devices */
+@media screen and (max-width: 768px) {
+    .knowledge-article-container {
+        padding: 10px; /* Reduced padding for smaller screens */
+    }
+    .header {
+        flex-direction: column; /* Stacks the header elements */
+        align-items: flex-start; /* Aligns elements to the start */
+    }
+    .article-title {
+        margin-top: 10px; /* Adds space between back icon and title */
+    }
+}

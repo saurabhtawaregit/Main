@@ -1,0 +1,27 @@
+<template>
+    <!-- Container for the entire page -->
+    <div class="knowledge-article-container">
+        <!-- Header with back button -->
+        <div class="header">
+            <lightning-icon icon-name="utility:back" size="small" onclick={handleBackClick} class="back-icon"></lightning-icon>
+            <div class="article-title slds-text-heading_medium">{currentArticle.title}</div>
+        </div>
+        
+        <!-- Content section -->
+        <lightning-layout-item key={currentArticle.Id} size="12" medium-device-size="6" padding="around-small">
+            <!-- Publish Date -->
+            <!-- Uncomment if you want to display publish date -->
+            <!-- <div class="publish-date">Last Published: {currentArticle.publishedDate}</div> -->
+            
+            <!-- Article Question -->
+           <!-- <div class="article-section">
+                <lightning-formatted-rich-text value={currentArticle.question} disable-linkify class="article-content"></lightning-formatted-rich-text>
+            </div>-->
+            
+            <!-- Article Answer -->
+            <div class="article-section">
+                <lightning-formatted-rich-text value={currentArticle.answer} disable-linkify class="article-content"></lightning-formatted-rich-text>
+            </div>
+        </lightning-layout-item>
+    </div>
+</template>

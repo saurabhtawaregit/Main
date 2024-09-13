@@ -7,5 +7,15 @@
 		<members>Contact.isApproved__c</members>
 		<name>CustomField</name>
 	</types>
+	<types>
+		<members>knowledgeArticleDetail</members>
+		<members>knowledgeArticleDetailSearch</members>
+		<members>knowledgeArticleList</members>
+		<name>LightningComponentBundle</name>
+	</types>
+	<types>
+		<members>KnowledgeArticleController</members>	
+		<name>ApexClass</name>
+	</types>
     <version>44.0</version>
 </Package>
