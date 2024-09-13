@@ -11,6 +11,7 @@
 		<members>knowledgeArticleDetail</members>
 		<members>knowledgeArticleDetailSearch</members>
 		<members>knowledgeArticleList</members>
+		<members>KnowledgeArticleControllerTest</members>
 		<name>LightningComponentBundle</name>
 	</types>
 	<types>
