@@ -1,0 +1,42 @@
+<template>
+    <div class="spinner">
+        <template if:true={spinner}>
+            <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+            </lightning-spinner>
+        </template>
+    </div>
+
+    <template if:true={isShowArticle}>
+        <lightning-card title="Knowledge Articles" icon-name="standard:knowledge" class="knowledge-card">
+            <div class="slds-m-around_medium">
+                <template if:true={knowledgeArticles}>
+                    <div class="article-grid">
+                        <template for:each={processedKnowledgeArticles} for:item="article">
+                            <div class="article-card" key={article.Id} onclick={handleArticleClick} 
+                                data-articletitle={article.Title} data-lastdate={article.LastPublishedDate}
+                                data-question={article.Question__c} data-answer={article.Answer__c}
+                                data-articleid={article.Id} data-urlname={article.UrlName}
+                                style={article.backgroundImageStyle}>
+
+                                <!-- Article Details -->
+                                <div class="article-details">
+                                    <h2 class="article-title">{article.Title}</h2>
+                                </div>
+
+                                <!-- Read More Button -->
+                                <div class="read-more">
+                                    <lightning-button label="Read More" variant="neutral" onclick={handleArticleClick}></lightning-button>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+                
+                <!-- No Articles Found -->
+                <template if:true={articleNotFound}>
+                    <p class="no-articles">No knowledge articles found.</p>
+                </template>
+            </div>
+        </lightning-card>
+    </template>
+</template>
