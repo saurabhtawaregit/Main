@@ -44,7 +44,7 @@ export default class KnowledgeArticleDetail extends NavigationMixin(LightningEle
                 console.log('result>>>',result);
                 this.currentArticle.answer = result.Answer__c;
                 this.currentArticle.title = result.Title;
-                this.this.currentArticle.id = result.Id;
+                this.currentArticle.id = result.Id;
                 console.log('this.currentArticle>>>',this.currentArticle);
                 this.error = undefined;
                 //this.isShowArticle = true;
