@@ -20,6 +20,11 @@
                 <default>false</default>
                 <label>Rejected</label>
             </value>
+            <value>
+                <fullName>Added</fullName>
+                <default>false</default>
+                <label>Added</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
