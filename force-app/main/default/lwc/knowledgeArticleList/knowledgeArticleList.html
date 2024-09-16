@@ -25,7 +25,12 @@
 
                                 <!-- Read More Button -->
                                 <div class="read-more">
-                                    <lightning-button label="Read More" variant="neutral" onclick={handleArticleClick}></lightning-button>
+                                    <lightning-button label="Read More" variant="neutral" key={article.Id} 
+                                    data-articletitle={article.Title} data-lastdate={article.LastPublishedDate}
+                                    data-question={article.Question__c} data-answer={article.Answer__c}
+                                    data-articleid={article.Id} data-urlname={article.UrlName}
+                                    style={article.backgroundImageStyle} onclick={handleArticleClick}>
+                                    </lightning-button>
                                 </div>
                             </div>
                         </template>

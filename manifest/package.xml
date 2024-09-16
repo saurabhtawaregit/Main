@@ -11,11 +11,15 @@
 		<members>knowledgeArticleDetail</members>
 		<members>knowledgeArticleDetailSearch</members>
 		<members>knowledgeArticleList</members>
-		<members>KnowledgeArticleControllerTest</members>
 		<name>LightningComponentBundle</name>
 	</types>
 	<types>
-		<members>KnowledgeArticleController</members>	
+		<members>KnowledgeArticleController</members>
+		<members>KnowledgeArticleControllerTest</members>
+		<members>Constants</members>
+		<members>ConstantsTest</members>
+		<members>NetworkController</members>
+		<members>NetworkControllerTest</members>	
 		<name>ApexClass</name>
 	</types>
     <version>60.0</version>
