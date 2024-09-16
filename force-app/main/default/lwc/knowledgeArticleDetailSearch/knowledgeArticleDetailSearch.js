@@ -58,7 +58,6 @@ export default class KnowledgeArticleDetail extends NavigationMixin(LightningEle
                 this.article = undefined;
                 console.error('Error retrieving Knowledge Article: ', error);
             });
-    }
 
     /**
     * @author: Saurabh
@@ -72,12 +71,18 @@ export default class KnowledgeArticleDetail extends NavigationMixin(LightningEle
         window.history.back();
         return false;*/
 
-        this[NavigationMixin.Navigate]({
+        /*this[NavigationMixin.Navigate]({
             type: 'standard__webPage',
             attributes: {
-                url: 'https://ssst-e-dev-ed.develop.my.site.com/sfdcx/s/'
+                url: this.communityBaseUrl
             }
-        });
+        });*/
         
+        this[NavigationMixin.Navigate]({
+            type: 'standard__namedPage',
+            attributes: {
+                pageName: 'home'
+            },
+        });
     }
 }
