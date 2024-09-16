@@ -15,11 +15,7 @@ export default class KnowledgeArticleDetail extends NavigationMixin(LightningEle
 
 
     connectedCallback() {
-        //console.log(this.articleData.state);
-        //Data can be sent to this page through navigation only string format so we have to parse it 
-        //To show in HTML
-        //this.currentArticle = JSON.parse(this.articleData.state.articleData)
-        //console.log(this.currentArticle);
+
         const currentUrl = window.location.href;
 
         // Find the position of 'article/' in the URL
@@ -58,6 +54,7 @@ export default class KnowledgeArticleDetail extends NavigationMixin(LightningEle
                 this.article = undefined;
                 console.error('Error retrieving Knowledge Article: ', error);
             });
+    }
 
     /**
     * @author: Saurabh
@@ -65,18 +62,6 @@ export default class KnowledgeArticleDetail extends NavigationMixin(LightningEle
     * @description: Navigates to previous page on Back button click
     **/
     handleBackClick(event) {
-        /*event.preventDefault();
-        var url = window.location.href;
-        var value = url.substr(0, url.lastIndexOf('/') + 1);
-        window.history.back();
-        return false;*/
-
-        /*this[NavigationMixin.Navigate]({
-            type: 'standard__webPage',
-            attributes: {
-                url: this.communityBaseUrl
-            }
-        });*/
         
         this[NavigationMixin.Navigate]({
             type: 'standard__namedPage',
