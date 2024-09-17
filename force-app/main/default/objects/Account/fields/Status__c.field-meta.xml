@@ -25,6 +25,11 @@
                 <default>false</default>
                 <label>Added</label>
             </value>
+            <value>
+                <fullName>Removed</fullName>
+                <default>false</default>
+                <label>Removed</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
